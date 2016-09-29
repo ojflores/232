@@ -12,28 +12,33 @@ int main()
 	int a[MAX];
 	FILE *f = fopen("file.txt", "r");
 	
-	int i = 0;
+	int counter = 0;
 	
 	while ((read = getline(&line, &len, f)) != -1) {
-		a[i] = atoi(line);
-		i += 1;
+		a[counter] = atoi(line);
+		counter += 1;
 	}
-	int j;
-	for (j = 0; j < i; j++){
-		printf("%d\n", a[j]);
+	int c;
+	//for (c = 0; c < i; c++){
+	//	printf("%d\n", a[c]);}
+	
+	int j;		//j
+	int key;
+	int i;				//i
+	for (j = 1; j < counter; j++){
+		key = a[j];
+		i = j - 1;
+		while (i >= 0 && a[i] > key){
+			a[i+1] = a[i];
+			i -= 1;
+		}
+		a[i+1] = key;
 	}
 	
-	
-	
-	
-	//int number_of_numbers[6];
-	//fscanf(f, "%d", &number);
-	
-	
-	
-	
-	
-	
+	for (c = 0; c < counter; c++){
+		printf("%d\n", a[c]);
+	}
+		
 	return 0;
 	
 }
