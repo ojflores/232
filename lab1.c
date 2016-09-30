@@ -14,6 +14,7 @@ int main()
 	
 	int counter = 0;
 	
+	//next 3 lines found at http://man7.org/linux/man-pages/man3/getline.3.html
 	while ((read = getline(&line, &len, f)) != -1) {
 		a[counter] = atoi(line);
 		counter += 1;
