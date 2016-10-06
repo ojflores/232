@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 20
+#define MAX 200
 
 merge(int arr[], int p, int q, int r){
 	int n1 = q - p + 1;
@@ -22,7 +22,12 @@ merge(int arr[], int p, int q, int r){
 	int k;
 	for(k = p; k <= r; k++){
 		if(L[i] <= R[j]){
-			
+			arr[k] = L[i];
+			i += 1;
+		}
+		else {
+			arr[k] = R[j];
+			j +=1;
 		}
 	}
 	
@@ -31,9 +36,21 @@ merge(int arr[], int p, int q, int r){
 
 
 
-print_array(int arr[], int c, int counter){	//test to see if array can be passed
+
+print_array(int arr[], int counter){	//test to see if array can be passed
+	int c;
 	for (c = 0; c < counter; c++){
 		printf("%d\n", arr[c]);
+	}
+}
+
+merge_sort(int arr[], int p, int r){
+	int q;
+	if(p < r) {
+		q = (p + r)/2;
+		merge_sort(arr, p, q);
+		merge_sort(arr, q + 1, r);
+		merge(arr, p, q, r);
 	}
 }
 
@@ -52,8 +69,9 @@ main(){
 		a[counter] = atoi(line);
 		counter += 1;
 	}
-	int c;
-	print_array(a, c, counter);
-		
+	
+	merge_sort(a, 0, counter - 1);
+	print_array(a, counter);
+	
 	
 }
