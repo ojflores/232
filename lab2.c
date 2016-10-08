@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define MAX 200
 
 merge(int arr[], int p, int q, int r){
@@ -69,8 +70,14 @@ main(){
 		a[counter] = atoi(line);
 		counter += 1;
 	}
+
+	clock_t begin = clock();
 	
 	merge_sort(a, 0, counter - 1);
+	clock_t end = clock();
+	double time_spent = (double)(end - begin)/CLOCKS_PER_SEC;
+	printf("time spent: %f\n", time_spent);
+	
 	print_array(a, counter);
 	
 	
