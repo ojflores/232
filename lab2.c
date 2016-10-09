@@ -82,3 +82,4 @@ main(){
 	
 	
 }
+//doesn't work above the number 200
