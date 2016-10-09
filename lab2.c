@@ -83,3 +83,4 @@ main(){
 	
 }
 //doesn't work above the number 200
+//turns out lab1 runs a little bit faster
