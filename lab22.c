@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define MAX 20
 
 bubble_sort(int arr[], int counter){
@@ -44,7 +45,17 @@ main(){
 		a[counter] = atoi(line);
 		counter += 1;
 	}
+	clock_t begin = clock();
+	
 	
 	bubble_sort(a, counter - 2);
+	
+	clock_t end = clock();
+	double time_spent = (double)(end - begin)/CLOCKS_PER_SEC;
+	printf("time spent: %f\n", time_spent);
 	print_array(a, counter);
 }
+
+
+//doesn't work after the 22 number
+//segentation fault
