@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #define INPUT "input.txt"
 #define MAX 20000
+#define MIN -20000
 
 void max_heapify(int arr[], int i, int counter){
 	int l = 2 * i;	//this is l as in lamb, not the number
@@ -27,7 +28,7 @@ void max_heapify(int arr[], int i, int counter){
 void build_max_heap(int arr[], int counter){
 	int heap_size = counter;
 	int i;
-	for (i = heap_size/2; i > 0; i--){
+	for (i = heap_size/2; i >= 0; i--){
 		max_heapify(arr, i, counter);
 	}
 }
@@ -35,7 +36,7 @@ void build_max_heap(int arr[], int counter){
 void heap_sort(int arr[], int counter){
 	build_max_heap(arr, counter);
 	int i, temp;
-	for (i = counter; i >= 1; i--){
+	for (i = counter; i >= 0; i--){
 		temp = arr[0];
 		arr[0] = arr[i];
 		arr[i] = temp;
@@ -45,8 +46,46 @@ void heap_sort(int arr[], int counter){
 	}
 }
 
+int heap_extract_max(int arr[], int heap_size){
+	
+	if (heap_size < 1){
+		printf("heap underflow");
+		exit(0);
+	}
+	int max = arr[0];
+	arr[0] = arr[heap_size];
+	heap_size -= 1;
+	max_heapify(arr, 0, heap_size);
+	return max;
+}
 
+void heap_increase_key(int arr[], int i, int key){
+	if(key < arr[i]){
+		printf("the key is smaller than the current key");
+		exit(0);
+	}
+	arr[i] = key;
+	int temp;
+	while(i > 1 && arr[i/2] < arr[i]){
+		temp = arr[i];
+		arr[i] = arr[i/2];
+		arr[i/2] = temp;
+		i = i / 2;
+	}
+}
 
+void max_heap_insert(int arr[], int key, int heap_size){
+	heap_size += 1;
+	arr[heap_size] = MIN;
+	heap_increase_key(arr, heap_size, key);
+}
+
+void print_array(int arr[], int counter){
+	int c;
+	for (c = 0; c < counter; c++){
+		printf("%d\n", arr[c]);
+	}
+}
 
 void main(){
 	char *line = NULL;
@@ -65,14 +104,18 @@ void main(){
 	counter -= 1;
 	
 	heap_sort(a, counter);
+	print_array(a, counter);
+	printf("\n");
 	
+	printf("heap extract max: \n");
+	printf("%d\n", heap_extract_max(a, counter));
 	
-	int c;
-	for (c = 0; c < counter; c++){
-		printf("%d\n", a[c]);
-	}
+	printf("\n");
 	
+	printf("max heap insert\n");
+	max_heap_insert(a, 3, counter);
+	print_array(a, counter);
+	fclose(f);
 }
 
 
-//my name is oscar
