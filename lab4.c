@@ -11,8 +11,10 @@ void counting_sort(int A[], int B[], int k, int length){
 	for (j = 0; j <= length; j++){
 		C[A[j]] = C[A[j]] + 1;
 	}
-	//for (i = 1; i < k; i++){}
-		
+	for (i = 1; i <= k; i++){
+		C[i] = C[i] + C[i - 1];
+	}
+	
 	
 	
 	
