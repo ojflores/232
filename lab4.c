@@ -14,15 +14,14 @@ void counting_sort(int A[], int B[], int k, int length){
 	for (i = 1; i <= k; i++){
 		C[i] = C[i] + C[i - 1];
 	}
-	
-	
-	
-	
-	
+	for (j = 7; j >= 0; j--){
+		B[C[A[j]]] = A[j];
+		C[A[j]] = C[A[j]] - 1;
+	}
 	
 	int d;
-	for (d = 0; d < i; d++){
-		printf("%d\n", C[d]);
+	for (d = 1; d <= 8; d++){
+		printf("%d\n", B[d]);
 	}
 }
 
