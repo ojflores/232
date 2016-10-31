@@ -20,10 +20,12 @@ void bucket_sort(float A[], int n){
 		}
 	}
 	
-	for (i = 1; i <= n; i++){
+	for (i = 0; i <= n; i++){
+		int x = (n+1) * A[i];
+		printf("%d\n", x);
 		B[i]->val = A[i];
 	}
-	
+	/*
 	for (i = 1; i <= n; i++){
 		while(B[i]->val > 0){
 			printf("%f\n", B[i]->val);
@@ -31,7 +33,7 @@ void bucket_sort(float A[], int n){
 			break;
 		}
 	}	
-	
+	*/
 }
 
 void main(){
