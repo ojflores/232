@@ -23,6 +23,8 @@ void counting_sort(int A[], int B[], int k, int length, int o){
 	
 	//adds a counter so that we know how many there are
 	for (j = 0; j <= length; j++){
+		//divides by "o" to get rid of the unwanted numbers
+		//then "%s" it to get the significant digit that we want
 		C[(A[j] / o) % mod] = C[(A[j] / o) % mod] + 1;
 	}
 	
@@ -35,6 +37,7 @@ void counting_sort(int A[], int B[], int k, int length, int o){
 		B[C[(A[j] / o) % mod]] = A[j];
 		C[(A[j] / o) % mod] = C[(A[j] / o) % mod] - 1;
 	}
+	//copies things into A to reset A and keep numbers in rightful order: as in makes this thing stable
 	for (j = 0; j <= length; j++){
 		A[j] = B[j+1];
 	}
@@ -54,6 +57,7 @@ void main(){
 		counting_sort(A, B, k, length, o);
 		print_array(B, length);
 		printf("\n");
+		//used as a divider to get the next signigicant digit
 		o = o * 10;
 		
 	}
