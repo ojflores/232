@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define AMOUNT_OF_NUMBERS 10
-#define MAX 100000
+//#define MAX 100000
 
 void print_array(int arr[], int amount){
 	int c;
@@ -15,14 +15,15 @@ void print_array(int arr[], int amount){
 void counting_sort(int A[], int B[], int k, int length){
 	int C[k+1];
 	int i, j;
+	//makes everything in C zero
 	for (i = 0; i < (k+1); i++){
 		C[i] = 0;
 	}
-	
+	//adds a counter so that we know how many there are
 	for (j = 0; j <= length; j++){
 		C[A[j]] = C[A[j]] + 1;
 	}
-	
+	//adds the numbers previous to it for some reason
 	for (i = 1; i < (k+1); i++){
 		C[i] = C[i] + C[i-1];
 	}
@@ -36,9 +37,9 @@ void counting_sort(int A[], int B[], int k, int length){
 
 
 void main(){
-	int A[20] = {2, 5, 3, 0, 2, 3, 0, 3};
+	int A[20] = {25, 52, 33, 10, 32, 53, 70, 23};
 	int B[20];
-	int k = 5;
+	int k = 7;
 	int length = 7;
 	counting_sort(A, B, k, length);
 	print_array(B, length);
