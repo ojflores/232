@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define MAX 10
+#include <time.h>
+#define MAX 100000
 
 typedef struct node{
 		float val;
@@ -73,15 +74,25 @@ void bucket_sort(float A[], int n){
 }
 
 void main(){
+	float a[] = {.78, .17, .39, .26, .72, .94, .22, .12, .23, .68};
+ 	int counter = 9;
+ 	bucket_insertion_sort(a, counter);
+	print_array(a, counter);
 	float my_array[MAX];
 	int i;
 	int n = MAX;
-	float a = 1.0;
+	float b = 1.0;
 	for (i = 0; i < n; i++){
-		my_array[i] = ((float)rand()/(float)(RAND_MAX)) * a;	//random number generator found at: http://stackoverflow.com/questions/13408990/how-to-generate-random-float-number-in-c
+		my_array[i] = ((float)rand()/(float)(RAND_MAX)) * b;	//random number generator found at: http://stackoverflow.com/questions/13408990/how-to-generate-random-float-number-in-c
 	}
-	bucket_insertion_sort(my_array, MAX);
-	print_array(my_array, MAX);
 	
+	
+	//timed
+	printf("timer beginning: \n");
+	clock_t begin = clock();
+	bucket_insertion_sort(my_array, MAX);
+	clock_t end = clock();
+	double time_spent = (double)(end - begin)/CLOCKS_PER_SEC;
+	printf("time spent: %f\n", time_spent);
 
 }
