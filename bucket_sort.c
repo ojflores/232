@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+#define MAX 10
 
 typedef struct node{
 		float val;
@@ -10,13 +10,12 @@ typedef struct node{
 	
 void print_array(float arr[], int amount){
 	int c;
-	//starts at 1 because of indexing isssue
 	for (c = 0; c < amount; c++){
 		printf("%f\n", arr[c]);
 	}
 }
 
-void insertion_sort(float a[], int counter){
+void bucket_insertion_sort(float a[], int counter){
 	int j, i;
 	float key;
 	//initialization
@@ -56,6 +55,7 @@ void bucket_sort(float A[], int n){
 	for (i = 0; i <= n; i++){
 		//this receives the counter for insertion sort
 		float array[n];
+		//had to create a pointer to the items in memory
 		node_t * current = B[i];
 		int how_many = 0;
 		while (current != NULL){
@@ -63,27 +63,25 @@ void bucket_sort(float A[], int n){
 			how_many += 1;
 			current = current->next;
 		}
-		insertion_sort(array, how_many);
+		bucket_insertion_sort(array, how_many);
+		//doesn't print the zeros that are in the array
 		if(how_many > 0){
-			
 			print_array(array, how_many);
 		}	
 	}
-	
-	/*
-	for (i = 0; i <= n; i++){
-		node_t * current;
-		current = B[i];
-		while(current != NULL){
-			printf("%f\n", current->val);
-			current = current->next;
-		}
-	}	
-	*/
+
 }
 
 void main(){
-	float a[] = {.78, .17, .39, .26, .72, .94, .22, .12, .23, .68};
-	int counter = 9;
-	bucket_sort(a, counter);
+	float my_array[MAX];
+	int i;
+	int n = MAX;
+	float a = 1.0;
+	for (i = 0; i < n; i++){
+		my_array[i] = ((float)rand()/(float)(RAND_MAX)) * a;	//random number generator found at: http://stackoverflow.com/questions/13408990/how-to-generate-random-float-number-in-c
+	}
+	bucket_insertion_sort(my_array, MAX);
+	print_array(my_array, MAX);
+	
+
 }
