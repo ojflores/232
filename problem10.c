@@ -31,8 +31,9 @@ node_t * insert_sorted(node_t * heap, int num){
 }
 
 
+
 int minimum(node_t * heap){
-	int min = heap->next->val;
+	int min = heap->val;
 	node_t * list = heap->next;
 	list = list->next;
 	while (list != NULL){
@@ -44,7 +45,23 @@ int minimum(node_t * heap){
 	return min;
 }
 
-
+//found at https://www.cs.bu.edu/teaching/c/linked-list/delete/
+node_t * extract_min(node_t * heap){
+	int min = minimum(heap);
+	//printf("%d\n", min);
+	if (heap == NULL){
+		return NULL;
+	}
+	
+	if (heap->val == min){
+		node_t * temp;
+		temp = heap->next;
+		free(heap);
+		return temp;
+	}
+	heap->next =  extract_min(heap->next);
+	return heap;
+}
 
 
 void main(){
@@ -54,12 +71,12 @@ void main(){
 	insert_sorted(heap1, 14);
 	insert_sorted(heap1, 3);
 	node_t * list = heap1->next;
+	extract_min(list);
+	//printf("%d\n", minimum(heap1));
 	while (list != NULL){
 		printf("%d\n", list->val);
 		list = list->next;
 	}
-	printf("%d\n", minimum(heap1));
-	
 }
 
 
