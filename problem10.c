@@ -63,20 +63,18 @@ node_t * extract_min(node_t * heap){
 	return heap;
 }
 
+node_t * uniter(node_t * list1, node_t * list2){
+	node_t * temp = list1;
+	while(temp != NULL){
+		temp->next;
+	}
+	temp->next = list2;
+	return temp;
+	
+}
+
 
 void main(){
-	
-	node_t * heap1 = malloc(sizeof(node_t));
-	insert_sorted(heap1, 12);
-	insert_sorted(heap1, 14);
-	insert_sorted(heap1, 3);
-	node_t * list = heap1->next;
-	extract_min(list);
-	//printf("%d\n", minimum(heap1));
-	while (list != NULL){
-		printf("%d\n", list->val);
-		list = list->next;
-	}
 }
 
 
