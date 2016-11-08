@@ -7,10 +7,7 @@ typedef struct node{
 }node_t;
 
 
-
-//lists are sorted
-
-
+//takes a node_t and a number and inserts it in a non descending order
 node_t * insert_sorted(node_t * heap, int num){
 	node_t * newnode = malloc(sizeof(node_t));
 	newnode->val = num;
@@ -31,11 +28,12 @@ node_t * insert_sorted(node_t * heap, int num){
 }
 
 
-
+//finds the minimum
 int minimum(node_t * heap){
 	int min = heap->val;
 	node_t * list = heap->next;
 	list = list->next;
+	//goes through the list comparing items so that it indeed returns minimum
 	while (list != NULL){
 		if (list->val < min){
 			min = list->val;
@@ -63,6 +61,19 @@ node_t * extract_min(node_t * heap){
 	return heap;
 }
 
+//uses sorted insert to insert items from a sorted list to another sorted list
+node_t * sorted_uniter(node_t * list1, node_t * list2){
+	node_t * temp = list2;
+	int value;
+	while (temp->next != NULL){
+		 value = temp->val;
+		 insert_sorted(list1, value);
+		 temp = temp->next;
+	}
+	return list1;
+}
+
+//slaps the list on the end of another list
 node_t * uniter(node_t * list1, node_t * list2){
 	node_t * temp = list1;
 	while(temp != NULL){
