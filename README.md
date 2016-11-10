@@ -9,3 +9,10 @@
 ####nothing other than a simple "make" is needed to compile these files
 ####also need stack.input/queue.input/linkedlist.input respectively
 
+
+##Lab 1
+
+####lab 1 include lab1v2.c
+####only need to run make to compile it
+
+
