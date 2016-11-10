@@ -12,7 +12,7 @@
 
 ##Lab 1
 
-####lab 1 include lab1v2.c
+####lab 1 includes only lab1v2.c
 ####only need to run make to compile it
 
 
