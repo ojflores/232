@@ -3,7 +3,7 @@
 #define PLUS insert
 #define MINUS pop
 #define SEARCH search
-#define MAX 5
+#define MAX 13
 
 
 int T[MAX];
@@ -13,14 +13,15 @@ int division(int k){
 	return k % MAX;
 }
 int hash(int k, int i){
-	return (multi(k) + i) % MAX;
+	//return (multi(k) + i) % MAX;
+	return (division(k) + (i * multi(k))) % MAX;
 }
 
 
 
 //hashing using multiplication
 int multi(int k){
-	float A = 0.618034;
+	float A = 0.6180339887;
 	float first = (k * A) - (int)(k * A);
 	int r_val = (int)(MAX * first);
 	return r_val;
@@ -59,7 +60,6 @@ int insert(int val)
 		}
 		else{
 			i++;
-			printf("%d\n", i);
 		}
 	}
 	printf("error: hash table overflow");	
