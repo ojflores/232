@@ -16,3 +16,14 @@
 ####only need to run make to compile it
 
 
+##Lab 2
+
+####includes lab2.c and lab22.c
+####lab2.c covers merge sort
+####lab22.c covers bubble sort
+####only need to run make to compile them
+
+##Lab 7: Hashes
+
+#### includes hash.c
+####only need to run make to compile them
