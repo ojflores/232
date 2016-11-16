@@ -13,7 +13,17 @@ typedef struct node{
 }node_t;
 node_t * list = NULL;
 
-
+node_t * tree_search(node_t * x, int k){
+	if (x == NULL || k == list->val){
+		return x;
+	}
+	if (k < x->val){
+		return tree_search(x->left, k);
+	}
+	else {
+		return tree_search(x->right, k);
+	}
+}
 
 void transplant(node_t * u, node_t * v){
 	if(u->parent == NULL){
@@ -92,4 +102,5 @@ int main()
 {
 	parse_exec();
 	print_data(list);
+	tree_search(list, 10);
 }
