@@ -6,11 +6,6 @@
 #define SEARCH search
 
 
-/*
-LAST YOU WORKED YOU WERE WORKING ON DELETE!!
-ALSO YOU DON'T KNOW IF TRANSPLANT ACTAULLY WORKS, SAME GOES FOR SEARCH
-*/
-
 typedef struct node{
 	int val;
 	struct node * left;
@@ -19,7 +14,13 @@ typedef struct node{
 }node_t;
 node_t * list = NULL;
 
-
+node_t * minimum(node_t * x){
+	node_t * temp = x;
+	while (temp->left != NULL){
+		temp = temp->left;
+	}
+	return temp;
+}
 
 void transplant(node_t * T, node_t * u, node_t * v){
 	if(u->parent == NULL){
@@ -35,6 +36,8 @@ void transplant(node_t * T, node_t * u, node_t * v){
 		v->parent = u->parent;
 	}
 }
+
+
 
 void insert(int z)
 {
@@ -66,21 +69,10 @@ void insert(int z)
 	printf("push \n");
 }
 
-int delete(int z)
-{
-	printf("delete!\n");
-	
-	return(1);
-}
+
 
 node_t * tree_search(node_t * x, int k){
 	if (x == NULL || k == x->val){
-		if (x == NULL){
-			printf("not found\n");
-		}
-		else {
-			printf("found\n");
-		}
 		return x;
 	}
 	if (k < x->val){
@@ -90,6 +82,33 @@ node_t * tree_search(node_t * x, int k){
 		return tree_search(x->right, k);
 	}
 }
+
+void delete(int x)
+{
+	printf("delete!\n");
+	node_t * z = tree_search(list, x);
+	if (z->left == NULL){
+		transplant(list, z, z->right);
+	}
+	else if (z->right == NULL){
+		transplant(list, z, z->left);
+	}
+	else {
+		node_t * y = minimum(z->right);
+		if (y->parent != z){
+			transplant(list, y, y->right);
+			y->right = z->right;
+			y->right->parent = y;
+		}
+		transplant(list, z, y);
+		y->left = z->left;
+		y->left->parent = y;
+	} 
+}
+/*
+got delete to work alongside transplant
+all that's left is writing the other things to do with the lab: delete, insert, and search are finished
+*/
 
 void search(int k){
 	printf("search\n");
