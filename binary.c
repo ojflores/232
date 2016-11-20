@@ -5,6 +5,12 @@
 #define MINUS delete
 #define SEARCH search
 
+
+/*
+LAST YOU WORKED YOU WERE WORKING ON DELETE!!
+ALSO YOU DON'T KNOW IF TRANSPLANT ACTAULLY WORKS, SAME GOES FOR SEARCH
+*/
+
 typedef struct node{
 	int val;
 	struct node * left;
@@ -13,19 +19,9 @@ typedef struct node{
 }node_t;
 node_t * list = NULL;
 
-node_t * tree_search(node_t * x, int k){
-	if (x == NULL || k == list->val){
-		return x;
-	}
-	if (k < x->val){
-		return tree_search(x->left, k);
-	}
-	else {
-		return tree_search(x->right, k);
-	}
-}
 
-void transplant(node_t * u, node_t * v){
+
+void transplant(node_t * T, node_t * u, node_t * v){
 	if(u->parent == NULL){
 		list = v;
 	}
@@ -70,14 +66,36 @@ void insert(int z)
 	printf("push \n");
 }
 
-int delete()
+int delete(int z)
 {
-	printf("pop!\n");
+	printf("delete!\n");
+	
 	return(1);
 }
 
-void search(){
+node_t * tree_search(node_t * x, int k){
+	if (x == NULL || k == x->val){
+		if (x == NULL){
+			printf("not found\n");
+		}
+		else {
+			printf("found\n");
+		}
+		return x;
+	}
+	if (k < x->val){
+		return tree_search(x->left, k);
+	}
+	else {
+		return tree_search(x->right, k);
+	}
+}
+
+void search(int k){
 	printf("search\n");
+	node_t * x = list;
+	tree_search(x, k);
+	
 }
 
 void print_data(node_t * list)
@@ -102,5 +120,5 @@ int main()
 {
 	parse_exec();
 	print_data(list);
-	tree_search(list, 10);
+	
 }
