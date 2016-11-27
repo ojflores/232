@@ -83,10 +83,22 @@ node_t * tree_search(node_t * x, int k){
 	}
 }
 
+node_t * iterative_search(node_t * x, int k){
+	while (x != NULL && k != x->val){
+		if (k < x->val){
+			x = x->left;
+		}
+		else {
+			x = x->right;
+		}
+	}
+	return x;
+}
+
 void delete(int x)
 {
 	printf("delete!\n");
-	node_t * z = tree_search(list, x);
+	node_t * z = iterative_search(list, x);
 	if (z->left == NULL){
 		transplant(list, z, z->right);
 	}
@@ -113,8 +125,8 @@ all that's left is writing the other things to do with the lab: delete, insert, 
 void search(int k){
 	printf("search -- ");
 	node_t * x = list;
-	tree_search(x, k);
-	if (tree_search(x, k)){
+	iterative_search(x, k);
+	if (iterative_search(x, k)){
 		printf("found\n");
 	}
 	else {
