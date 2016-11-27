@@ -14,6 +14,24 @@ typedef struct node{
 }node_t;
 node_t * list = NULL;
 
+//maximum and minimum functions for exercise 12.2-2; all four of them
+node_t * maximum(node_t * x){
+	//do this so that the original pointer doesn't change
+	node_t * temp = x;
+	while (temp->right != NULL){
+		temp = temp->right;
+	}
+	return temp;
+}
+
+node_t * recursive_max(node_t * x){
+	node_t * temp = x;
+	if (temp->right != NULL){
+		return recursive_max(temp->right);
+	}
+	return temp;
+}
+
 node_t * minimum(node_t * x){
 	node_t * temp = x;
 	while (temp->left != NULL){
@@ -24,7 +42,7 @@ node_t * minimum(node_t * x){
 
 node_t * recursive_min(node_t * x){
 	node_t * temp = x;
-	if (x->left != NULL){
+	if (temp->left != NULL){
 		return recursive_min(temp);
 	}
 	return temp;
