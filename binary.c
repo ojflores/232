@@ -22,6 +22,14 @@ node_t * minimum(node_t * x){
 	return temp;
 }
 
+node_t * recursive_min(node_t * x){
+	node_t * temp = x;
+	if (x->left != NULL){
+		return recursive_min(temp);
+	}
+	return temp;
+} 
+
 void transplant(node_t * T, node_t * u, node_t * v){
 	if(u->parent == NULL){
 		list = v;
@@ -106,7 +114,7 @@ void delete(int x)
 		transplant(list, z, z->left);
 	}
 	else {
-		node_t * y = minimum(z->right);
+		node_t * y = recursive_min(z->right);
 		if (y->parent != z){
 			transplant(list, y, y->right);
 			y->right = z->right;
