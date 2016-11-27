@@ -111,10 +111,15 @@ all that's left is writing the other things to do with the lab: delete, insert, 
 */
 
 void search(int k){
-	printf("search\n");
+	printf("search -- ");
 	node_t * x = list;
 	tree_search(x, k);
-	
+	if (tree_search(x, k)){
+		printf("found\n");
+	}
+	else {
+		printf("not found\n");
+	}
 }
 
 void print_data(node_t * list)
