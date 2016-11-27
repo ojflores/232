@@ -27,3 +27,10 @@
 
 #### includes hash.c
 ####only need to run make to compile them
+
+##Lab 8: Binary Search Tree
+
+#### includes binary.c
+####need hash.input to run
+####like so, cat hash.input | ./binary
+####also ex_12.txt included i guess, not really sure where to turn those in
