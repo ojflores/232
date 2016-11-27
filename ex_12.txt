@@ -1,0 +1,8 @@
+
+
+Exercise 12.2-1
+C would be impossible, since 912 > 911 yet in the sequence comes after a number < 911.
+E is also impossible, because 299 < 347 yet comes after a number > than it
+
+Ex. 12.2-2 is in the lab
+
