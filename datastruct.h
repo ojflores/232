@@ -22,7 +22,9 @@ void exec_cmd(struct line_in cmd)
 		case '+':
 			PLUS(cmd.params[0]); break;
 		case '-': 
-			MINUS(cmd.params[0]); break;	//here was the change oscar
+			MINUS(cmd.params[0]); break;	//here was the change oscar, just take out the cmd.params thing
+		case '?':
+			SEARCH(cmd.params[0]); break;
 	}
 }
 void parse_exec() {
