@@ -30,13 +30,12 @@ void parse_exec() {
 			token = strtok(line, space);
 			while(token != NULL){
 				// insert integer version of token into appropriate linked list
-				push(array[i], token);
+				int number = atoi(token);
+				push(array[i], number);
 				token = strtok(NULL, space);
 			}
 		}
 		
 	}
-	while( fgets(line, MAX_BUFFER, stdin) != NULL ) { 
-		parsed_line = parse_line(line);
-	}
+	
 }
