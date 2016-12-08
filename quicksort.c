@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//#define MAX 10
+#define MAX 10
 #define INPUT "input.txt"
 
 
@@ -51,7 +51,7 @@ void randomized_quicksort(int A[], int p, int r){
 		randomized_quicksort(A, q+1, r);
 	}
 }
-/*
+
 void print_array(int arr[], int counter){
 	int c;
 	counter += 1;
@@ -61,7 +61,7 @@ void print_array(int arr[], int counter){
 }
 
 void main(){
-	/*
+	
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -95,4 +95,3 @@ void main(){
 	
 	
 }
-*/
