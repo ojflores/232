@@ -34,3 +34,7 @@
 ####need hash.input to run
 ####like so, cat hash.input | ./binary
 ####also ex_12.txt included i guess, not really sure where to turn those in
+
+##Lab 9: Graph Algorithms
+
+####includes struct.c
