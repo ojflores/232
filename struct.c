@@ -7,8 +7,7 @@
 #define WHITE 0
 #define GRAY 1
 #define BLACK 2
-//these hold the counters for enqueue/dequeue
-int current = 0, head = 0;
+
 
 typedef struct node{
 	int val;
