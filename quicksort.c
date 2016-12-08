@@ -36,6 +36,7 @@ void quicksort(int A[], int p, int r){
 }
 
 int randomized_partition(int A[], int p, int r){
+	//next funky line: makes sure to get a random number from within the array its working with
 	int i = rand() % (r-p) + p;
 	int temp = A[r];
 	A[r] = A[i];
