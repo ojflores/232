@@ -2,12 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX 100
-#define NUMBER_OF_VERTICES 10
+#define NUMBER_OF_VERTICES 11
 #define INF_DISTANCE 20
 #define WHITE 0
 #define GRAY 1
 #define BLACK 2
 
+typedef struct v2{
+	int color;
+	struct v2 * parent;
+	int distance;
+	int final;
+}v2_t;
 
 typedef struct node{
 	int val;
@@ -48,17 +54,14 @@ void BFS(node_t * array[], int s){
 	u[s]->color = GRAY;
 	u[s]->distance = 0;
 	u[s]->parent = NULL;
-	
-	//left off here man
+
 	node_t * Q = malloc(sizeof(node_t));
 	push(Q, s);
 	Q = Q->next;
 	int d = 1;
 	while(Q != NULL){
 		int vert = Q->val;
-		
 		printf("\n verts:  %d:  ", vert);
-		
 		node_t * current = array[vert];
 		current = current->next;
 		while (current != NULL){
@@ -76,13 +79,6 @@ void BFS(node_t * array[], int s){
 		Q = Q->next;
 		d++;
 	}
-	
-	
-	
-	
-	
-	
-	
 	printf("\n\n\n");
 	for(i = 0; i < NUMBER_OF_VERTICES; i++){
 		vertex_t * x = u[i];
@@ -92,8 +88,49 @@ void BFS(node_t * array[], int s){
 	
 }
 
+void DFS_visit(node_t * array[], v2_t * vertex[], int u, int time){
+	time += 1;
+	vertex[u]->distance = time;
+	vertex[u]->color = GRAY;
+	node_t * current = array[u];
+	current = current->next;
+	while (current != NULL){
+		if (vertex[current->val]->color == WHITE){
+			vertex[current->val]->parent = vertex[u];
+			DFS_visit(array, vertex, current->val, time);
+		}
+		current = current->next;
+	}
+	vertex[u]->color = BLACK;
+	time += 1;
+	vertex[u]->final = time;
+}
 
-
+void DFS(node_t * array[], int u){
+	v2_t * vertices[NUMBER_OF_VERTICES];
+	int i;
+	for (i = 0; i < NUMBER_OF_VERTICES; i++){
+		vertices[i] = malloc(sizeof(v2_t));
+		vertices[i]->color = WHITE;
+		vertices[i]->parent = NULL;
+	}
+	int time = 0;
+	node_t * current = array[u];
+	current = current->next;
+	while (current != NULL){
+		if (vertices[current->val]->color == WHITE){
+			DFS_visit(array, vertices, u, time);
+		}
+		current = current->next;
+	}
+	
+	for (i = 0; i < 8; i++){
+		printf("\n%d", vertices[i]->color);
+		printf("%d", vertices[i]->distance);
+		printf("%d\n", vertices[i]->final);
+	}
+	
+}
 
 void parse_exec(){
 	FILE * input;
@@ -135,6 +172,7 @@ void parse_exec(){
 		printf("\n");
 	}
 	BFS(array, 2);
+	DFS(array, 2);
 	
 	
 	fclose(input);
@@ -142,7 +180,5 @@ void parse_exec(){
 
 
 void main(){
-	
 	parse_exec();
-	
 }
