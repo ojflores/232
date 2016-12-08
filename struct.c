@@ -41,7 +41,7 @@ void push(node_t * head, int value){
 	return;
 }
 //takes in an array and the number(index) of the starting node
-//carefule, the input numbers are 1 indexed
+
 void BFS(node_t * array[], int s){
 	vertex_t * u[NUMBER_OF_VERTICES];
 	int i;
@@ -60,9 +60,12 @@ void BFS(node_t * array[], int s){
 	Q = Q->next;
 	int d = 1;
 	while(Q != NULL){
+		//use vert to keep the value even after it is passed over later on
 		int vert = Q->val;
 		printf("\n verts:  %d:  ", vert);
 		node_t * current = array[vert];
+		//when things are pushed into a list they are pushed into the *next of the head pointer
+		//next line corrects this problem
 		current = current->next;
 		while (current != NULL){
 			printf("\ncurrent values:  %d:  ", current->val);
@@ -77,6 +80,7 @@ void BFS(node_t * array[], int s){
 		
 		}
 		Q = Q->next;
+		//increases the distance every time the loop finishes
 		d++;
 	}
 	printf("\n\n\n");
