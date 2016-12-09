@@ -16,9 +16,22 @@
 ####lab22.c covers bubble sort
 ####only need to run make to compile them
 
+##Lab 3: Heap sort
+####includes lab3.c
+####needs input.txt to run
+
+##Lab 4
+
+####includes both quicksort.c and lab4.c
+####need input.txt to run quicksort
+
+##Graph
+
+####book1
+
 ##LAB 6
 
-####Lab 6 includes stack.c, queue.c, and linkedlist.c
+####includes stack.c, queue.c, and linkedlist.c
 ####datastruct.h is needed for these to run successfully
 ####nothing other than a simple "make" is needed to compile these files
 ####also need stack.input/queue.input/linkedlist.input respectively
