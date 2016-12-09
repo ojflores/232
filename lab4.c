@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define AMOUNT_OF_NUMBERS 10
-//#define MAX 100000
 
 void print_array(int arr[], int amount){
 	int c;
@@ -37,10 +36,11 @@ void counting_sort(int A[], int B[], int k, int length){
 
 
 void main(){
-	int A[20] = {25, 52, 33, 10, 32, 53, 70, 23};
+	int A[20] = {2, 5, 3, 1, 3, 3, 0, 2};
 	int B[20];
-	int k = 7;
+	int k = 8;
 	int length = 7;
+	
 	counting_sort(A, B, k, length);
 	print_array(B, length);
 
