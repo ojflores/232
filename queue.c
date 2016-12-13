@@ -49,7 +49,8 @@ void print_datastructure() {
 	
 } // end definitions
 // Leave this alone: 
-#include "datastruct.h" 
+#include "datastruct_queue.h" 
+
 int main() {
 	parse_exec();
 	print_datastructure();
