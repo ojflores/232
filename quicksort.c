@@ -12,6 +12,7 @@ int partition(int A[], int p, int r){	//for now counter = 13
 	int x = A[r];
 	int i = p - 1;
 	int temp, t, j;
+	//i = p-1 && j = p
 	for (j = p; j < r; j++){
 		if(A[j] <= x){
 			i += 1;
@@ -19,11 +20,13 @@ int partition(int A[], int p, int r){	//for now counter = 13
 			A[i] = A[j];
 			A[j] = temp;
 		}
-	}						//at start j = 0
+	}
+	//A[j-1] was swapped, now is > x 
 	t = A[i+1];
 	A[i+1] = A[r];
 	A[r] = t;
 	return (i + 1);
+	//termination: now j = r
 }
 
 void quicksort(int A[], int p, int r){
@@ -33,6 +36,7 @@ void quicksort(int A[], int p, int r){
 		quicksort(A, p, q-1);
 		quicksort(A, q+1, r);
 	}
+	
 }
 
 int randomized_partition(int A[], int p, int r){
@@ -76,23 +80,13 @@ void main(){
 		counter += 1;
 	}
 	counter -= 1;
-	
+	printf("regular quicksort:\n");
 	quicksort(a, 0, counter);
 	print_array(a, counter);
 	
+	printf("\nrandomized quicksort:\n");
 	randomized_quicksort(a, 0, counter);
 	print_array(a, counter);
-	
-	//timed array
-	int timed_array[MAX];
-	int i;
-	int n = MAX;
-	for (i = 0; i < n; i++){
-		timed_array[i] = rand() % MAX;
-	}
-	
-	
-	randomized_quicksort(timed_array, 0, MAX);
 	
 	
 }
