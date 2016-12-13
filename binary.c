@@ -43,7 +43,7 @@ node_t * minimum(node_t * x){
 node_t * recursive_min(node_t * x){
 	node_t * temp = x;
 	if (temp->left != NULL){
-		return recursive_min(temp);
+		return recursive_min(temp->left);
 	}
 	return temp;
 } 
